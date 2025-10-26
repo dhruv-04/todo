@@ -48,7 +48,7 @@ def getById(id):
             if task['id'] == id:
                 print(f"[GET ONE] Got the to do task.")
                 return jsonify(task), 200
-            return jsonify({ "message" : "Id not found." }), 404
+        return jsonify({ "message" : "Id not found." }), 404
     except Exception as e:
         print(f"[GET ONE] Error fetching the task with the id.")
         return jsonify({ "message": "[GET ONE] Error fetching the task with the given id." }), 500
@@ -63,7 +63,7 @@ def updateToDo(id):
                 task['Completed'] = payload['Completed']
                 print(f"[UPDATE] Task with the given id updated.")
                 return jsonify(task), 200
-            return jsonify({ "message" : "Id not found." }), 404
+        return jsonify({ "message" : "Id not found." }), 404
     except Exception as e:
         print(f"[UPDATE] Error updating the task with the id.")
         return jsonify({ "message": "[UPDATE] Error updating the task with the given id." }), 500
@@ -76,6 +76,7 @@ def deleteToDo(id):
                 tasks.remove(task)
                 print(f"[DELETE] Task deleted.")
                 return jsonify({ "message": "Task deleted." }), 200
+        return jsonify({ "message" : "Id not found." }), 404
     except Exception as e:
         print(f"[DELETE] Error deleting the task.")
         return jsonify({ "message": "[DELETE] Error deleting the task." }), 500
